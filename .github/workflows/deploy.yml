@@ -1,4 +1,7 @@
 name: Deploy Planora Web to Azure VM
+env:
+  ACTIONS_STEP_DEBUG: true
+
 
 on:
   push:
