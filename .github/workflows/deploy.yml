@@ -46,6 +46,8 @@ jobs:
               PORT=${{ secrets.DEV_PORT }}
               API_URL="${{ secrets.DEV_API_URL }}"
             fi
+            echo "Using port: \$PORT"
+            echo "Using API URL: \$API_URL"
             
             echo "Stopping existing container if it exists..."
             RUNNING_CONTAINER=\$(sudo docker ps -q --filter "ancestor=${{ secrets.DOCKER_USERNAME }}/planora-web:latest")
