@@ -16,6 +16,7 @@ function App() {
         return response.text();
       })
       .then(data => {
+        console.log(data);
         setMessage(data);
       })
       .catch(error => {
