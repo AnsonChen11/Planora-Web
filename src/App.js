@@ -6,7 +6,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const apiUrl = process.env.PLANORA_WS_PROD_API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     fetch(`${apiUrl}/`)
       .then(response => {
