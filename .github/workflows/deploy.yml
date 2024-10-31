@@ -1,6 +1,4 @@
 name: Deploy Planora Web to Azure VM
-env:
-  ACTIONS_STEP_DEBUG: true
 
 
 on:
@@ -43,14 +41,12 @@ jobs:
           ssh -t -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.AZURE_VM_USERNAME }}@${{ secrets.AZURE_VM_IP }} << EOF
             # Determine the port to use based on the branch
             if [ "\${GITHUB_REF##*/}" == "main" ]; then
-              PORT=${{ secrets.PROD_PORT }}
+              PORT=8080
               API_URL="${{ secrets.PROD_API_URL }}"
             else
               PORT=${{ secrets.DEV_PORT }}
               API_URL="${{ secrets.DEV_API_URL }}"
             fi
-            echo "Using port: \$PORT"
-            echo "Using API URL: \$API_URL"
             
             echo "Stopping existing container if it exists..."
             RUNNING_CONTAINER=\$(sudo docker ps -q --filter "ancestor=${{ secrets.DOCKER_USERNAME }}/planora-web:latest")
