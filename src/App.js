@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     const apiUrl = process.env.REACT_APP_API_URL;
-
+    console.log(apiUrl);
     fetch(`${apiUrl}/`)
       .then(response => {
         if (!response.ok) {
