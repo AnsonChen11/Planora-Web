@@ -40,9 +40,8 @@ jobs:
           chmod 600 private_key.pem 
           ssh -t -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.AZURE_VM_USERNAME }}@${{ secrets.AZURE_VM_IP }} << EOF
             # Determine the port to use based on the branch
-            echo "Current branch: \${GITHUB_REF##*/}"
             if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-              PORT=8080
+              PORT=${{ secrets.PROD_PORT }}
               API_URL="${{ secrets.PROD_API_URL }}"
             elif [[ "${{ github.ref }}" == refs/heads/dev_* ]]; then
               PORT=${{ secrets.DEV_PORT }}
