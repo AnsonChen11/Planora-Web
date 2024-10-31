@@ -60,6 +60,6 @@ jobs:
 
             echo "Running the Docker container on port \$PORT..."
             sudo docker run -d -p \$PORT:3000 \
-              -e REACT_APP_API_URL=\$API_URL \
+              --build-arg REACT_APP_API_URL=\$API_URL \
               ${{ secrets.DOCKER_USERNAME }}/planora-web:latest
           EOF
